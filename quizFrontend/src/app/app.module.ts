@@ -11,6 +11,9 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthServiceService } from './services/auth-service.service';
 import { TokenService } from './services/token.service';
+import { AuthService } from './services/auth.service';
+import { BeforeLoginService } from './services/before-login.service';
+import { AfterLoginService } from './services/after-login.service';
 
 
 
@@ -28,7 +31,7 @@ BrowserModule,
     FormsModule,
     HttpClientModule
   ],
-  providers: [AuthServiceService, TokenService],
+  providers: [AuthServiceService, TokenService, AuthService, BeforeLoginService, AfterLoginService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

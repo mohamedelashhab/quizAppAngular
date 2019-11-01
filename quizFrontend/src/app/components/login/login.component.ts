@@ -7,6 +7,7 @@ import { ConditionalExpr } from '@angular/compiler';
 // import { AuthService } from '../../services/auth.service';
 import { AuthServiceService } from './../../services/auth-service.service';
 import { TokenService } from './../../services/token.service';
+import { AuthService } from './../../services/auth.service';
 
 
 @Component({
@@ -27,7 +28,7 @@ export class LoginComponent implements OnInit {
     private authService: AuthServiceService,
     private Token: TokenService,
     private router: Router,
-    // private Auth: AuthService
+    private Auth: AuthService
   ) { }
 
   onSubmit() {
@@ -41,7 +42,7 @@ export class LoginComponent implements OnInit {
 
   handleResponse(data) {
     this.Token.handle(data.access_token);
-    // this.Auth.changeAuthStatus(true);
+    this.Auth.changeAuthStatus(true);
     this.router.navigateByUrl('/profile');
   }
 
