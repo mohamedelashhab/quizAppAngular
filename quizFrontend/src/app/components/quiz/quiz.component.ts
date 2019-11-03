@@ -48,10 +48,17 @@ export class QuizComponent implements OnInit {
     //edit
     // if(this.quiz.id != null)
 
-    //add
+    
     if(this.quiz.id == null){
+      //add
       this.quizService.createQuiz(this.quiz).subscribe(
         (data) => { this.quiz.id = data['id']; console.log(data) }
+      );
+    }
+    else{
+      //edit
+      this.quizService.editQuiz(this.quiz, this.quiz.id).subscribe(
+        (data) => {console.log(data)}
       );
     }
     

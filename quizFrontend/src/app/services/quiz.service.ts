@@ -32,5 +32,17 @@ export class QuizService {
   getQuiz(quizId: number){
     return this.http.get(`${this.baseUrl}/quiz/${quizId}/show`, { headers: this.headers });
   }
+  editQuiz(data: any, quizId)
+  {
+    return this.http.put(`${this.baseUrl}/quiz/${quizId}/edit`,data, { headers: this.headers });
+  }
+  editQuestation(data: any, questationId)
+  {
+    return this.http.put(`${this.baseUrl}/questations/${questationId}/edit`,data, { headers: this.headers });
+  }
+  editAnswer(data: any, answerId)
+  {
+    return this.http.put(`${this.baseUrl}/answers/${answerId}/edit`,data, { headers: this.headers });
+  }
 
 }
