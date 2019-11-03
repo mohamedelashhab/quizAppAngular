@@ -12,8 +12,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { AuthServiceService } from './services/auth-service.service';
 import { TokenService } from './services/token.service';
 import { AuthService } from './services/auth.service';
+import { UserAuthService } from './services/user-auth.service';
 import { BeforeLoginService } from './services/before-login.service';
 import { AfterLoginService } from './services/after-login.service';
+import { QuizComponent } from './components/quiz/quiz.component';
+import { QuestationComponent } from './components/questation/questation.component';
+import { AnswerComponent } from './components/answer/answer.component';
+import { ArchwizardModule } from 'angular-archwizard';
+
+
 
 
 
@@ -23,15 +30,19 @@ import { AfterLoginService } from './services/after-login.service';
     NavbarComponent,
     LoginComponent,
     SignupComponent,
-    ProfileComponent
+    ProfileComponent,
+    QuizComponent,
+    QuestationComponent,
+    AnswerComponent
   ],
   imports: [
 BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ArchwizardModule
   ],
-  providers: [AuthServiceService, TokenService, AuthService, BeforeLoginService, AfterLoginService ],
+  providers: [AuthServiceService, TokenService, AuthService, BeforeLoginService, AfterLoginService, UserAuthService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

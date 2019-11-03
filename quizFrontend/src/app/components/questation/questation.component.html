@@ -1,0 +1,66 @@
+<div class="mt-4 col-8 offset-2">
+    <div class="card">
+        <div class="card-header">Create questation</div>
+        <div class="card-body">
+            <form #questationForm=ngForm>
+
+                <div class="alert alert-danger" [hidden]="!error">
+                    {{error}}
+                </div>
+                <div class="form-group row">
+                    <label for="body" class="col-sm-2 col-form-label">questation</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="body" class="form-control" id="body" placeholder="body"
+                            [(ngModel)]="questation.body" required>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="body1" class="col-sm-2 col-form-label">a</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="body" class="form-control" id="body1" placeholder="" [(ngModel)]="answers[0].body"
+                            required>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="body" class="col-sm-2 col-form-label">b</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="body" class="form-control" id="body1" placeholder="" [(ngModel)]="answers[1].body"
+                            required>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="body" class="col-sm-2 col-form-label">c</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="body" class="form-control" id="body1" placeholder="" [(ngModel)]="answers[2].body"
+                            required>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="body" class="col-sm-2 col-form-label">d</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="body" class="form-control" id="body1" placeholder="" [(ngModel)]="answers[3].body"
+                            required>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="num" class="col-sm-2 col-form-label">correct answer</label>
+                    <div class="col-sm-10">
+                        <select [(ngModel)]="is_correct" name="num" class="mdb-select md-form form-control" required>
+                            <option value="" disabled selected>Choose your option</option>
+                            <option value="0">a</option>
+                            <option value="1">b</option>
+                            <option value="2">c</option>
+                            <option value="3">d</option>
+                        </select>
+                    </div>
+                </div>
+
+
+                <button type="submit" (click)="onSubmit()" class="btn btn-primary" [disabled]="!questationForm.valid" *ngIf="creatable">create</button>
+                <button type="submit" (click)="onSubmit()" class="btn btn-primary" [disabled]="!questationForm.valid" *ngIf="!creatable">edit</button>
+
+            </form>
+        </div>
+    </div>
+</div>
