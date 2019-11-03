@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { QuizService } from './../../services/quiz.service';
 
 @Component({
@@ -10,9 +10,11 @@ export class QuestationComponent implements OnInit {
 
   @Input('quiz') quizId : number;
   @Input('InputQuestation') InputQuestation : any = null;
+  @Output() added = new EventEmitter();
+
 
   creatable:boolean = true;
-  oldCorrectAnswer: number;
+  oldCorrectAnswer: number = null;
   
   
   is_correct: number;
@@ -40,9 +42,14 @@ export class QuestationComponent implements OnInit {
       let i = 0;
       this.questation.answers.forEach(e => {
         this.answers[i] = e;
-        if (e.is_correct == true) { this.is_correct = i; this.oldCorrectAnswer = i; }
+        if (e.is_correct == true) { this.is_correct = i; this.oldCorrectAnswer = i;console.log(this.oldCorrectAnswer) }
         i++;
       });
+      if(!this.oldCorrectAnswer){
+        this.oldCorrectAnswer = 1;
+        this.is_correct = 1;
+
+      }
       i = 0;
     }
     else{
@@ -59,6 +66,7 @@ export class QuestationComponent implements OnInit {
       //submit the questation and get id
       this.quizService.createQuestation(this.questation, this.quizId).subscribe(
         (data) => {
+          this.added.emit();
           this.questation = data;
           //submit answers
           this.submitAnswers(data);
@@ -83,6 +91,7 @@ export class QuestationComponent implements OnInit {
     
   }
   editAnswers() {
+    console.log(this.oldCorrectAnswer);
     this.answers[this.is_correct].is_correct = true;
     this.answers[this.oldCorrectAnswer].is_correct = false;
     this.answers.forEach(e => {

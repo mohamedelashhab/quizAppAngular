@@ -10,6 +10,8 @@ import { QuizService } from './../../services/quiz.service';
 export class QuizComponent implements OnInit {
 
   @Input('quizId') quizId: number = null;
+  count: number = 0;
+  publishable: boolean = false;
 
   quiz:any = {
     id: null,
@@ -28,19 +30,32 @@ export class QuizComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    
     // get quiz
     if(this.quizId)
     {
       this.quizService.getQuiz(this.quizId).subscribe(
         (data) => {
+          this.count = data['questations'].length;
+          this.count = data['num'];
           this.quiz = data;
-          console.log(this.quiz.questations);
+          this.canPublish();
+          console.log(data);
+  
         }
       );
     }
     
 
 
+  }
+  canPublish() {
+    console.log(this.count, this.quiz.num);
+    if (this.count == this.quiz.num) {
+      this.publishable = true;
+    } else {
+      this.publishable = false;
+    }
   }
 
   onSubmit() {
@@ -64,7 +79,21 @@ export class QuizComponent implements OnInit {
     
   }
 
+  publish()
+  {
+    console.log(this.quiz.id);
+    //publish
+    
+  }
 
-  
+
+  countable(){
+    this.count++;
+    this.canPublish();
+    console.log("count" + this.count);
+  }
+
+
+
 
 }

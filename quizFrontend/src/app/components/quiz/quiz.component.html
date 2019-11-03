@@ -40,7 +40,9 @@
     </aw-wizard-step>
 
     <aw-wizard-step stepTitle="questations" awOptionalStep>
-         <app-questation [InputQuestation]="quiz.questations[i]" [quiz]="quiz.id" *ngFor="let n of counter(); let i = index"></app-questation> 
+         <app-questation (added)="countable()" [InputQuestation]="quiz.questations[i]" [quiz]="quiz.id" *ngFor="let n of counter(); let i = index"></app-questation> 
     </aw-wizard-step>
 
 </aw-wizard>
+
+<button type="submit" (click)="publish()" class="btn btn-primary" [disabled]="!publishable">publish</button>
