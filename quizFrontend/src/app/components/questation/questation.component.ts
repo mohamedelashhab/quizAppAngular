@@ -12,6 +12,7 @@ export class QuestationComponent implements OnInit {
   @Input('InputQuestation') InputQuestation : any = null;
 
   creatable:boolean = true;
+  oldCorrectAnswer: number;
   
   
   is_correct: number;
@@ -39,7 +40,7 @@ export class QuestationComponent implements OnInit {
       let i = 0;
       this.questation.answers.forEach(e => {
         this.answers[i] = e;
-        if (e.is_correct == true) { this.is_correct = i }
+        if (e.is_correct == true) { this.is_correct = i; this.oldCorrectAnswer = i; }
         i++;
       });
       i = 0;
@@ -48,7 +49,7 @@ export class QuestationComponent implements OnInit {
       this.creatable = true;
     }
     
-    // this.answers
+ 
   }
 
   onSubmit()
@@ -67,6 +68,11 @@ export class QuestationComponent implements OnInit {
     }
     else{
       // edit
+      this.quizService.editQuestation(this.questation, this.questation.id).subscribe(
+        (data)=> {
+          this.editAnswers();
+        }
+      );
 
     }
     
@@ -75,6 +81,15 @@ export class QuestationComponent implements OnInit {
     
     
     
+  }
+  editAnswers() {
+    this.answers[this.is_correct].is_correct = true;
+    this.answers[this.oldCorrectAnswer].is_correct = false;
+    this.answers.forEach(e => {
+      this.quizService.editAnswer(e, e.id).subscribe(
+        (data) => console.log(data)
+      );
+    });
   }
   submitAnswers(data: Object) {
     this.answers[this.is_correct].is_correct = true;
