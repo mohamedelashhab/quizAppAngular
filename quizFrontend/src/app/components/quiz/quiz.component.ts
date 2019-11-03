@@ -17,6 +17,7 @@ export class QuizComponent implements OnInit {
     id: null,
     name: null,
     num:null,
+    published:0,
     questations: []
   }
 
@@ -81,9 +82,11 @@ export class QuizComponent implements OnInit {
 
   publish()
   {
-    console.log(this.quiz.id);
     //publish
-    
+    this.quiz.published = true;
+    this.quizService.publishQuiz(this.quiz, this.quiz.id).subscribe(
+      (data) => { this.publishable = false }
+    );
   }
 
 

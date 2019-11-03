@@ -36,7 +36,10 @@
                 </div>
             </div>
         </div>
-        <button type="button" (click)="onSubmit()" [disabled]="!quizForm.valid" awNextStep>Next Step</button>
+        <div class="mt-4 col-8 offset-2">
+            <button type="button" (click)="onSubmit()" [disabled]="!quizForm.valid" awNextStep>Next Step</button>
+        </div>
+       
     </aw-wizard-step>
 
     <aw-wizard-step stepTitle="questations" awOptionalStep>
@@ -44,5 +47,6 @@
     </aw-wizard-step>
 
 </aw-wizard>
-
-<button type="submit" (click)="publish()" class="btn btn-primary" [disabled]="!publishable">publish</button>
+<div class="mt-4 col-8 offset-2">
+    <button type="submit" (click)="publish()" class="btn btn-primary" [disabled]="!publishable">publish</button>
+</div>

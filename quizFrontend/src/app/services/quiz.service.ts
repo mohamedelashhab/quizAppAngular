@@ -36,6 +36,10 @@ export class QuizService {
   {
     return this.http.put(`${this.baseUrl}/quiz/${quizId}/edit`,data, { headers: this.headers });
   }
+  publishQuiz(data: any, quizId)
+  {
+    return this.http.put(`${this.baseUrl}/quiz/${quizId}/publish`,data, { headers: this.headers });
+  }
   editQuestation(data: any, questationId)
   {
     return this.http.put(`${this.baseUrl}/questations/${questationId}/edit`,data, { headers: this.headers });
@@ -44,5 +48,6 @@ export class QuizService {
   {
     return this.http.put(`${this.baseUrl}/answers/${answerId}/edit`,data, { headers: this.headers });
   }
+  
 
 }
