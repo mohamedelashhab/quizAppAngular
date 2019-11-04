@@ -19,6 +19,8 @@ import { QuizComponent } from './components/quiz/quiz.component';
 import { QuestationComponent } from './components/questation/questation.component';
 import { AnswerComponent } from './components/answer/answer.component';
 import { ArchwizardModule } from 'angular-archwizard';
+import { InedxComponent } from './components/inedx/inedx.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 
 
@@ -33,7 +35,9 @@ import { ArchwizardModule } from 'angular-archwizard';
     ProfileComponent,
     QuizComponent,
     QuestationComponent,
-    AnswerComponent
+    AnswerComponent,
+    InedxComponent,
+    NotFoundComponent
   ],
   imports: [
 BrowserModule,

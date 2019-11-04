@@ -10,7 +10,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let quiz of quizzes" (click)="edit(quiz.id)">
+        <tr *ngFor="let quiz of quizzes" (click)="edit(quiz)">
             <th scope="row">{{quiz.id}}</th>
             <td>{{quiz.name}}</td>
             <td>{{quiz.num}}</td>

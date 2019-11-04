@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { QuizService } from './../../services/quiz.service';
+import { Router, ActivatedRoute } from '@angular/router';
+import { UserAuthService } from './../../services/user-auth.service';
+
+
 
 @Component({
   selector: 'app-profile',
@@ -10,9 +14,11 @@ export class ProfileComponent implements OnInit {
 
 
   //not published quizzes
-  quizzes: any[];
+  quizzes: any;
 
-  constructor(private quizService: QuizService) { }
+  constructor(private quizService: QuizService,
+     private router: Router,
+     private userAuth: UserAuthService) { }
 
   ngOnInit() {
 
@@ -26,10 +32,22 @@ export class ProfileComponent implements OnInit {
 
 
   //edit to publish quiz
-  edit(quizId)
+  edit(quiz)
   {
-    //navigate to quiz component
+
+    //guard
+    if (!quiz || this.userAuth.id() != quiz.teacher_id) { 
+      this.router.navigate(['**']);
+    }
+    else{
+      //navigate to quiz component
+      this.router.navigate([`/quizzes/${quiz.id}/edit`]);
+    }
+
+
     
+
+
   }
 
 }
