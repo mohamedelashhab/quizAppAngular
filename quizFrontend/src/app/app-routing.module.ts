@@ -7,6 +7,7 @@ import { InedxComponent } from './components/inedx/inedx.component';
 import { BeforeLoginService } from './services/before-login.service';
 import { AfterLoginService } from './services/after-login.service';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { PraciceComponent } from './components/pracice/pracice.component';
 
 
 
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: "profile", component: ProfileComponent, canActivate: [AfterLoginService] },
   { path: "quizzes/:id/edit", component: InedxComponent, canActivate: [AfterLoginService] },
   { path: "quizzes/create", component: InedxComponent, canActivate: [AfterLoginService] },
+  { path: "quizzes/:id/practice", component: PraciceComponent, canActivate: [AfterLoginService] },
   { path: "**", component: NotFoundComponent },
   
 

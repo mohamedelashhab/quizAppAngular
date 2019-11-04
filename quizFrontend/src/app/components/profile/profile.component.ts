@@ -41,18 +41,30 @@ export class ProfileComponent implements OnInit {
     }
     else{
       //navigate to quiz component
-      this.checkPublish(quiz);
+      if(this.checkRole()){
+        this.checkPublish(quiz);
+      }else{
+        this.startQuiz(quiz.id);
+      }
     }
 
 
-    
-
-
+  }
+  startQuiz(id: any) {
+    this.router.navigate([`/quizzes/${id}/practice`]);
   }
   checkPublish(quiz: any) {
     if(!quiz.published)
     {
       this.router.navigate([`/quizzes/${quiz.id}/edit`]);
+    }
+  }
+
+  checkRole(){
+    if(this.userAuth.role() == 1){
+      return true;
+    }else{
+      return false;
     }
   }
 

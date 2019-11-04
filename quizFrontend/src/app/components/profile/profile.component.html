@@ -6,7 +6,7 @@
             <th scope="col">#</th>
             <th scope="col">name</th>
             <th scope="col">number of questations</th>
-            <th scope="col">Handle</th>
+            <th scope="col" *ngIf="checkRole()">Handle</th>
         </tr>
     </thead>
     <tbody>
@@ -14,10 +14,10 @@
             <th scope="row">{{quiz.id}}</th>
             <td>{{quiz.name}}</td>
             <td>{{quiz.num}}</td>
-            <td>{{quiz.published == 0? "Not published yet": "published"}}</td>
+            <td *ngIf="checkRole()">{{quiz.published == 0? "Not published yet": "published"}}</td>
         </tr>
     </tbody>
 </table>
 
-<button class="btn btn-default"><a [routerLink]="['/quizzes/create']">Create Quiz</a></button>
+<button class="btn btn-default" *ngIf="checkRole()"><a [routerLink]="['/quizzes/create']">Create Quiz</a></button>
 <!-- <button class="btn btn-link"  (click)="edit(quiz)">Not published yet</button> -->
