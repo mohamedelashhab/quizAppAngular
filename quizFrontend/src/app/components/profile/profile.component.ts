@@ -35,8 +35,9 @@ export class ProfileComponent implements OnInit {
   edit(quiz)
   {
 
-    //guard
-    if (!quiz || this.userAuth.id() != quiz.teacher_id) { 
+    
+    //guard || this.userAuth.id() != quiz.teacher_id
+    if (!quiz ) { 
       this.router.navigate(['**']);
     }
     else{
