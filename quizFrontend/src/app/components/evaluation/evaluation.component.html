@@ -1,0 +1,6 @@
+<div class="list-group-item" style="background-color:blanchedalmond;"> {{data.body}} </div> <hr>
+<ul class="list-group">
+    <li *ngFor="let a of data.answers; let i = index;" class="list-group-item" [class.active]="isActive[i]" (click)="selected(a,i)">{{a.body}}</li>
+</ul>
+
+<hr>
