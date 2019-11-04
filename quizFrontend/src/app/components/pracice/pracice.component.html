@@ -11,11 +11,20 @@
 
     <!-- <app-evaluation [data]="quizId"></app-evaluation> -->
 
-    <div *ngIf="renderable">
-        <app-evaluation (choosed)="evaluate($event)" *ngFor="let q of questations; let i=index;" [data]="q" [questationIndex]="i"></app-evaluation>
+    <div *ngIf="!result">
+        <div *ngIf="renderable">
+            <app-evaluation (choosed)="evaluate($event)" *ngFor="let q of questations; let i=index;" [data]="q"
+                [questationIndex]="i"></app-evaluation>
+        </div>
+
+
+        <button type="button" *ngIf="!renderable" (click)="startQuiz()" class="btn btn-info">Start Quiz</button>
+        <button type="button" [disabled]="!canEvaluate" *ngIf="renderable" (click)="onFinish()"
+            class="btn btn-info">Evaluate</button>
     </div>
 
-    
-    <button type="button" *ngIf="!renderable" (click)="startQuiz()" class="btn btn-info">Start Quiz</button>
-    <button type="button" [disabled]="!canEvaluate" *ngIf="renderable" (click)="onFinish()" class="btn btn-info">Evaluate</button>
+    <div *ngIf="result">
+        <app-result [grade]="finallGrade" [quizName]="quiz.name" [num]="quiz.num"></app-result>
+    </div>
+  
     

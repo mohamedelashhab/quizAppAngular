@@ -20,6 +20,7 @@ export class PraciceComponent implements OnInit {
   choosedAnswers : boolean [] = [false];
   finallGrade = 0;
   canEvaluate = false;
+  result: boolean = false;
   // end properties
 
   constructor(private route:ActivatedRoute, private router:Router, private quizService: QuizService) {
@@ -81,7 +82,7 @@ export class PraciceComponent implements OnInit {
   grade(choosedAnswers: boolean[]) {
     let myGrade = 0;
     choosedAnswers.forEach(element => {
-      element ? myGrade++ : myGrade--;
+      element ? myGrade++ : myGrade;
     });
 
     this.finallGrade = myGrade;
@@ -90,6 +91,7 @@ export class PraciceComponent implements OnInit {
   onFinish()
   {
     this.grade(this.choosedAnswers);
+    this.result = true;
   }
 
 }

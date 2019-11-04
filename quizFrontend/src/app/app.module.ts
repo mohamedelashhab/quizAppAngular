@@ -23,6 +23,7 @@ import { InedxComponent } from './components/inedx/inedx.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { PraciceComponent } from './components/pracice/pracice.component';
 import { EvaluationComponent } from './components/evaluation/evaluation.component';
+import { ResultComponent } from './components/result/result.component';
 
 
 
@@ -41,7 +42,8 @@ import { EvaluationComponent } from './components/evaluation/evaluation.componen
     InedxComponent,
     NotFoundComponent,
     PraciceComponent,
-    EvaluationComponent
+    EvaluationComponent,
+    ResultComponent
   ],
   imports: [
 BrowserModule,
