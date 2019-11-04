@@ -25,6 +25,7 @@ export class InedxComponent implements OnInit , AfterViewInit {
       if(params.params.id){
         this.quizService.getQuiz(params.params.id).subscribe(
           (data) => {
+            //check if can update quiz
             if (!data || data.teacher_id != this.userAuth.id()) {
               this.renderable = false;
               this.router.navigate(['404']);
