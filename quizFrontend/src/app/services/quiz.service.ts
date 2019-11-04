@@ -53,6 +53,10 @@ export class QuizService {
   {
     return this.http.get(`${this.baseUrl}/quizzes/list?published=${published}`, { headers: this.headers });
   }
+  getAllQuizzes()
+  {
+    return this.http.get(`${this.baseUrl}/quizzes/list`, { headers: this.headers });
+  }
   
 
 }

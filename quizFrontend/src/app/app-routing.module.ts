@@ -16,6 +16,7 @@ const routes: Routes = [
   { path: "signup", component: SignupComponent, canActivate: [BeforeLoginService] },
   { path: "profile", component: ProfileComponent, canActivate: [AfterLoginService] },
   { path: "quizzes/:id/edit", component: InedxComponent, canActivate: [AfterLoginService] },
+  { path: "quizzes/create", component: InedxComponent, canActivate: [AfterLoginService] },
   { path: "**", component: NotFoundComponent },
   
 

@@ -22,20 +22,26 @@ export class InedxComponent implements OnInit , AfterViewInit {
 
     this.route.paramMap.subscribe(params => {
       // guard
-      this.quizService.getQuiz(params.params.id).subscribe(
-        (data) => {
-          if (!data || data.teacher_id != this.userAuth.id()){
+      if(params.params.id){
+        this.quizService.getQuiz(params.params.id).subscribe(
+          (data) => {
+            if (!data || data.teacher_id != this.userAuth.id()) {
+              this.renderable = false;
+              this.router.navigate(['404']);
+            };
+            this.renderable = true;
+          },
+          (error) => {
             this.renderable = false;
             this.router.navigate(['404']);
-          };
-          this.renderable = true;
-        },
-        (error) => {
-          this.renderable = false;
-          this.router.navigate(['404']);
-        }
-      );
-      this.quizId = params.params.id;
+          }
+        );
+        this.quizId = params.params.id;
+      }
+      else{
+        this.renderable = true;
+      }
+     
 
     });
   }

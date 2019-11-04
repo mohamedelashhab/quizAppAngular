@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { QuizService } from './../../services/quiz.service';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { UserAuthService } from './../../services/user-auth.service';
 
 
@@ -23,7 +23,7 @@ export class ProfileComponent implements OnInit {
   ngOnInit() {
 
     //get not published quizzes
-    this.quizService.getQuizzes(false).subscribe(
+    this.quizService.getAllQuizzes().subscribe(
       (data) => { console.log(data); this.quizzes = data ;}
     );
 
@@ -41,13 +41,19 @@ export class ProfileComponent implements OnInit {
     }
     else{
       //navigate to quiz component
-      this.router.navigate([`/quizzes/${quiz.id}/edit`]);
+      this.checkPublish(quiz);
     }
 
 
     
 
 
+  }
+  checkPublish(quiz: any) {
+    if(!quiz.published)
+    {
+      this.router.navigate([`/quizzes/${quiz.id}/edit`]);
+    }
   }
 
 }

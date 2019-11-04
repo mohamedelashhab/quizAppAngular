@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { UserAuthService } from './../../services/user-auth.service';
 import { QuizService } from './../../services/quiz.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-quiz',
@@ -27,7 +28,7 @@ export class QuizComponent implements OnInit {
   }
    
   constructor(
-    private quizService: QuizService
+    private quizService: QuizService, private router: Router
   ) { }
 
   ngOnInit() {
@@ -85,7 +86,9 @@ export class QuizComponent implements OnInit {
     //publish
     this.quiz.published = true;
     this.quizService.publishQuiz(this.quiz, this.quiz.id).subscribe(
-      (data) => { this.publishable = false }
+      (data) => { this.publishable = false;
+        this.navigateToHome();
+      }
     );
   }
 
@@ -94,6 +97,10 @@ export class QuizComponent implements OnInit {
     this.count++;
     this.canPublish();
     console.log("count" + this.count);
+  }
+
+  navigateToHome(){
+    this.router.navigate(['/profile']);
   }
 
 
