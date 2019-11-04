@@ -48,6 +48,11 @@ export class QuizService {
   {
     return this.http.put(`${this.baseUrl}/answers/${answerId}/edit`,data, { headers: this.headers });
   }
+
+  getQuizzes(published:boolean = false)
+  {
+    return this.http.get(`${this.baseUrl}/quizzes/list?published=${published}`, { headers: this.headers });
+  }
   
 
 }

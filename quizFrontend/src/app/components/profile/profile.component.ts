@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { QuizService } from './../../services/quiz.service';
 
 @Component({
   selector: 'app-profile',
@@ -7,9 +8,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor() { }
+
+  //not published quizzes
+  quizzes: any[];
+
+  constructor(private quizService: QuizService) { }
 
   ngOnInit() {
+
+    //get not published quizzes
+    this.quizService.getQuizzes(false).subscribe(
+      (data) => { console.log(data); this.quizzes = data ;}
+    );
+
+
+  }
+
+
+  //edit to publish quiz
+  edit(quizId)
+  {
+    //navigate to quiz component
+    
   }
 
 }

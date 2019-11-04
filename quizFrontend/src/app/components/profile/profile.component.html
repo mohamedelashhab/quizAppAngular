@@ -1,1 +1,20 @@
-<app-quiz [quizId]="48"></app-quiz>
+<!-- <app-quiz [quizId]="48"></app-quiz> -->
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">name</th>
+            <th scope="col">number of questations</th>
+            <th scope="col">Handle</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let quiz of quizzes" (click)="edit(quiz.id)">
+            <th scope="row">{{quiz.id}}</th>
+            <td>{{quiz.name}}</td>
+            <td>{{quiz.num}}</td>
+            <td>{{quiz.published == 0? "Not published yet": "published"}}</td>
+        </tr>
+    </tbody>
+</table>
