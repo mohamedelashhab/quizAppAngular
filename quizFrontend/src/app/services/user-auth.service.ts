@@ -26,7 +26,9 @@ export class UserAuthService {
 
   role()
   {
-    return this.user.role_id;
+    if (this.user != null) {
+      return this.user.role_id;
+    }  
   }
 
   setUser(user){
