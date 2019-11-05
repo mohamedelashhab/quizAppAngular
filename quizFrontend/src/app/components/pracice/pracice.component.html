@@ -18,7 +18,8 @@
         </div>
 
 
-        <button type="button" *ngIf="!renderable" (click)="startQuiz()" class="btn btn-info">Start Quiz</button>
+        <button type="button" style="position: absolute;right:50%;top:50%;"
+ *ngIf="!renderable" (click)="startQuiz()" class="btn btn-info">Start Quiz</button>
         <button type="button" [disabled]="!canEvaluate" *ngIf="renderable" (click)="onFinish()"
             class="btn btn-info">Evaluate</button>
     </div>
@@ -27,4 +28,6 @@
         <app-result [grade]="finallGrade" [quizName]="quiz.name" [num]="quiz.num"></app-result>
     </div>
   
+    <hr>
+    <hr>
     

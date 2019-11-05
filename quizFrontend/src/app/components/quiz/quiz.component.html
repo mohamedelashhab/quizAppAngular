@@ -4,7 +4,7 @@
     <aw-wizard-step stepTitle="Create quiz">
         <div class="mt-4 col-8 offset-2">
             <div class="card">
-                <div class="card-header">Create Quiz</div>
+                <div class="card-header"> Quiz</div>
                 <div class="card-body">
                     <form #quizForm=ngForm>
         
@@ -48,5 +48,8 @@
 
 </aw-wizard>
 <div class="mt-4 col-8 offset-2">
-    <button type="submit" (click)="publish()" class="btn btn-primary" [disabled]="!publishable">publish</button>
+    <button type="submit" (click)="publish()" class="btn btn-primary" [disabled]="!publishable">publish</button> <span hidden>  ggggggggggggg  </span>
+    <button type="submit" (click)="saveForLater()" class="btn btn-primary" style="position: absolute;right:0;top:0" [disabled]="quiz.id==null">save for later</button>
 </div>
+<hr>
+<hr>

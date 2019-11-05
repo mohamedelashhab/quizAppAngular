@@ -53,9 +53,10 @@ export class QuizService {
   {
     return this.http.get(`${this.baseUrl}/quizzes/list?published=${published}`, { headers: this.headers });
   }
-  getAllQuizzes()
+  getAllQuizzes(id:number = null)
   {
-    return this.http.get(`${this.baseUrl}/quizzes/list`, { headers: this.headers });
+    id == null? id=0 : id=id;
+    return this.http.get(`${this.baseUrl}/quizzes/list?teacher_id=${id}`, { headers: this.headers });
   }
   
 

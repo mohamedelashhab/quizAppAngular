@@ -16,14 +16,19 @@ export class ProfileComponent implements OnInit {
   //not published quizzes
   quizzes: any;
 
+  //id of teacher if the logged in user is teacher else null
+  id: number = null;
+
   constructor(private quizService: QuizService,
      private router: Router,
      private userAuth: UserAuthService) { }
 
   ngOnInit() {
 
-    //get not published quizzes
-    this.quizService.getAllQuizzes().subscribe(
+    //get not published quizzes of signed in teacher or all published quizzes for signed student
+    this.userAuth.role() == 1 ? this.id = this.userAuth.id() : this.id = null;
+    console.log(this.id);
+    this.quizService.getAllQuizzes(this.id).subscribe(
       (data) => { console.log(data); this.quizzes = data ;}
     );
 

@@ -35,4 +35,10 @@ export class UserAuthService {
     localStorage.setItem('user', JSON.stringify(user));
     this.user = user;
   }
+
+  removeUser()
+  {
+    this.user = null;
+    localStorage.removeItem('user');
+  }
 }

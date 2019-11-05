@@ -5,8 +5,8 @@
         <tr>
             <th scope="col">#</th>
             <th scope="col">name</th>
-            <th scope="col">number of questations</th>
-            <th scope="col" *ngIf="checkRole()">Handle</th>
+            <th scope="col">#questations</th>
+            <th scope="col">Is Published</th>
         </tr>
     </thead>
     <tbody>
@@ -14,7 +14,7 @@
             <th scope="row">{{quiz.id}}</th>
             <td>{{quiz.name}}</td>
             <td>{{quiz.num}}</td>
-            <td *ngIf="checkRole()">{{quiz.published == 0? "Not published yet": "published"}}</td>
+            <td>{{quiz.published == 0? "Not published yet": "published at " + quiz.updated_at|timeAgo}}</td>
         </tr>
     </tbody>
 </table>

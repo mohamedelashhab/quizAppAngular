@@ -24,6 +24,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { PraciceComponent } from './components/pracice/pracice.component';
 import { EvaluationComponent } from './components/evaluation/evaluation.component';
 import { ResultComponent } from './components/result/result.component';
+import { TimeAgoPipe } from 'time-ago-pipe';
 
 
 
@@ -43,7 +44,8 @@ import { ResultComponent } from './components/result/result.component';
     NotFoundComponent,
     PraciceComponent,
     EvaluationComponent,
-    ResultComponent
+    ResultComponent,
+    TimeAgoPipe
   ],
   imports: [
 BrowserModule,

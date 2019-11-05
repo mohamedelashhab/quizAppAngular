@@ -64,8 +64,6 @@ export class QuizComponent implements OnInit {
 
     //edit
     // if(this.quiz.id != null)
-
-    
     if(this.quiz.id == null){
       //add
       this.quizService.createQuiz(this.quiz).subscribe(
@@ -101,6 +99,12 @@ export class QuizComponent implements OnInit {
 
   navigateToHome(){
     this.router.navigate(['/profile']);
+  }
+
+  saveForLater()
+  {
+    this.onSubmit();
+    this.navigateToHome();
   }
 
 
